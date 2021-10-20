@@ -4,28 +4,24 @@ const noPasswordForm = document.getElementById('nopassword-form');
 noPasswordForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 
-	if (validationEmail()) {
-		emailErr.style.color = 'red';
-		emailErr.textContent = 'Wrong password!';
-		return false;
+	if (validEmail()) {
+		location.href = 'login.html';
 	}
-
-	location.href = 'login.html';
 });
 
-function validationEmail() {
+function validEmail() {
 	const email = document.getElementById('email').value;
 	const emailErr = document.getElementById('email-err');
 
 	if (email === '') {
 		emailErr.style.color = 'red';
 		emailErr.textContent = 'Email is required!';
-		return true;
+		return false;
 	} else if (!email.includes('@')) {
 		emailErr.style.color = 'red';
 		emailErr.textContent = 'Email is not valid!';
-		return true;
-	} else {
 		return false;
+	} else {
+		return true;
 	}
 }

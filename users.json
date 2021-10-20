@@ -1,0 +1,32 @@
+[
+	{
+		"username": "nikola",
+		"password": "123",
+		"name": "Nikola Buljcik",
+		"email": "nikola@gmail.com"
+	},
+	{
+		"username": "nenad",
+		"password": "456",
+		"name": "Nenad Rosuljas",
+		"email": "nenad@gmail.com"
+	},
+	{
+		"username": "aleksa",
+		"password": "789",
+		"name": "Aleksa Dmitrovic",
+		"email": "aleksa@gmail.com"
+	},
+	{
+		"username": "branislav",
+		"password": "123",
+		"name": "Branislav Pavkovic",
+		"email": "branislav@gmail.com"
+	},
+	{
+		"username": "uros",
+		"password": "456",
+		"name": "Uros Ristanovic",
+		"email": "uros@gmail.com"
+	}
+]

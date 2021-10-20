@@ -1,34 +1,28 @@
 'use strict';
 
-let users = [
-	{ username: 'nikola', password: '123' },
-	{ username: 'branislav', password: '456' },
-	{ username: 'aleksa', password: '333' },
-	{ username: 'nenad', password: '333' },
-];
+let username = getCookie('username');
+if (username) {
+	location.href = 'homepage.html';
+}
 
-function checkUser() {
+async function getUsers() {
+	const response = await fetch('../users.json');
+	const data = await response.json();
+	return data;
+}
+
+async function checkUser() {
+	let data = await getUsers();
 	let username = document.getElementById('username').value;
 	let password = document.getElementById('password').value;
-	let cookieName = 'username';
-	let cookiePassword = 'password';
-	let cookieNameValue = username;
-	let cookiePasswordValue = password;
-	const days = 7;
-	let user = users.find((user) => user.username === username);
+
+	let user = data.find((user) => user.username === username);
 	const userErr = document.getElementById('user-error');
 	const passwordErr = document.getElementById('password-error');
 	if (user) {
 		userErr.textContent = '';
 		if (user.password === password) {
-			createCookie(
-				cookieName,
-				cookieNameValue,
-				days,
-				cookiePassword,
-				cookiePasswordValue
-			);
-			location.href = 'homepage.html';
+			return user;
 		} else {
 			passwordErr.style.color = 'red';
 			passwordErr.textContent = 'Wrong password!';
@@ -39,32 +33,16 @@ function checkUser() {
 		userErr.textContent = 'User does not exist!';
 		return false;
 	}
-	return true;
 }
 
-document.getElementById('login-form').addEventListener('submit', (e) => {
+document.getElementById('login-form').addEventListener('submit', async (e) => {
 	e.preventDefault();
-	checkUser();
+	const user = await checkUser();
+	if (user) {
+		createCookie(user);
+		location.href = 'homepage.html';
+	}
 });
-
-let username = getCookie('username');
-let password = getCookie('password');
-
-if (username && password) {
-	location.href = 'homepage.html';
-}
-
-let rememberedUsername = getCookie('remembered username');
-let rememberedPassword = getCookie('remembered password');
-if (rememberedUsername && rememberedPassword) {
-	document.getElementById('username').value = rememberedUsername;
-	document.getElementById('password').value = rememberedPassword;
-}
-
-if (username && password) {
-	document.getElementById('username').value = username;
-	document.getElementById('password').value = password;
-}
 
 function setCookie(cname, cvalue) {
 	document.cookie = `${cname}=${cvalue}`;
@@ -77,27 +55,23 @@ function cookieExpiration(days) {
 	return expire;
 }
 
-function createCookie(
-	cookieName,
-	cookieNameValue,
-	days,
-	cookiePassword,
-	cookiePasswordValue
-) {
+function createCookie(user) {
 	let username = document.getElementById('username').value;
 	let password = document.getElementById('password').value;
+	let cookieName = 'username';
+	let cookiePassword = 'password';
+	let cookieNameValue = username;
+	let cookiePasswordValue = password;
+	const days = 7;
 	const remember = document.getElementById('remember').checked;
 	if (remember) {
 		rememberMeCookie(cookieName, cookieNameValue, days);
 		rememberMeCookie(cookiePassword, cookiePasswordValue, days);
-		rememberMeCookie('remember me', true, days);
-		rememberMeCookie('remembered username', username, days);
-		rememberMeCookie('remembered password', password, days);
+		rememberMeCookie('user info', JSON.stringify(user), days);
 	} else {
-		removeCookie('remembered username');
-		removeCookie('remembered password');
 		setCookie(cookieName, cookieNameValue);
 		setCookie(cookiePassword, cookiePasswordValue);
+		setCookie('user info', JSON.stringify(user));
 	}
 }
 

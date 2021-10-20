@@ -1,13 +1,14 @@
 'use strict';
 
 let username = getCookie('username');
-const msg = document.getElementById('hello-user');
-msg.textContent = `Hello, ${username}`;
-console.log(msg.textContent);
 
 if (!username) {
 	location.href = 'login.html';
 }
+const user = JSON.parse(getCookie('user info'));
+
+const msg = document.getElementById('hello-user');
+msg.textContent = `Welcome ${user.name}`;
 
 const logoutBtn = document.getElementById('logout');
 logoutBtn.addEventListener('click', (e) => {
@@ -15,7 +16,7 @@ logoutBtn.addEventListener('click', (e) => {
 
 	removeCookie('username');
 	removeCookie('password');
-	removeCookie('remember me');
+	removeCookie('user info');
 	location.href = 'login.html';
 });
 
