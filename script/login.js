@@ -6,18 +6,30 @@ if (username) {
 	location.href = 'homepage.html';
 }
 
+function displayError() {
+	const userErr = document.getElementById('user-error');
+	userErr.style.visibility = 'visible';
+}
+
 document.getElementById('login-form').addEventListener('submit', async (e) => {
 	e.preventDefault();
 	const user = await userjs.checkUser();
-	if (user) {
+	if (!user) {
+		displayError();
+	} else {
 		createCookie(user);
 		location.href = 'homepage.html';
 	}
 });
 
+function userCookie(user) {
+	const userCookie = user;
+	delete userCookie.password;
+	return JSON.stringify(userCookie);
+}
+
 function createCookie(user) {
 	let username = document.getElementById('username').value;
-	let password = document.getElementById('password').value;
 	let cookieName = 'username';
 
 	let cookieNameValue = username;
@@ -26,10 +38,10 @@ function createCookie(user) {
 	const remember = document.getElementById('remember').checked;
 	if (remember) {
 		cookiejs.rememberMeCookie(cookieName, cookieNameValue, days);
-		cookiejs.rememberMeCookie('user info', JSON.stringify(user), days);
+		cookiejs.rememberMeCookie('user info', userCookie(user), days);
 	} else {
 		cookiejs.setCookie(cookieName, cookieNameValue);
 
-		cookiejs.setCookie('user info', JSON.stringify(user));
+		cookiejs.setCookie('user info', userCookie(user));
 	}
 }

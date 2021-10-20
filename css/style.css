@@ -70,6 +70,12 @@ main form .form-group {
   height: 100%;
   padding: 20px;
 }
+main form .form-group span {
+  margin: 0 auto;
+  color: red;
+  font-size: 20px;
+  visibility: hidden;
+}
 main form .input-group {
   display: flex;
   flex-direction: column;

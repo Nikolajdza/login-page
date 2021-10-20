@@ -21,14 +21,13 @@
 		<main>
 			<form action="#" method="POST" id="login-form" novalidate>
 				<div class="form-group input-group">
+					<span id="user-error">Wrong username or password!</span>
 					<label for="username">Username</label>
 					<input type="text" name="username" id="username" required />
-					<span id="user-error"></span>
 				</div>
 				<div class="form-group input-group">
 					<label for="password">Password</label>
 					<input type="password" name="password" id="password" required />
-					<span id="password-error"></span>
 				</div>
 				<div class="remember-forget">
 					<div>
