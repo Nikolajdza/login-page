@@ -71,7 +71,7 @@ main form .form-group {
   padding: 20px;
 }
 main form .form-group span {
-  margin: 0 auto;
+  margin: 20px auto 0 auto;
   color: red;
   font-size: 20px;
   visibility: hidden;
@@ -118,7 +118,10 @@ main #login-form {
   height: 370px;
 }
 main #nopassword-form {
-  height: 200px;
+  height: 230px;
+}
+main #nopassword-form .form-group {
+  padding: 10px;
 }
 
 footer {

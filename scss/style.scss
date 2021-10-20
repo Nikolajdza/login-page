@@ -72,7 +72,7 @@ main {
 			padding: 20px;
 
 			span {
-				margin: 0 auto;
+				margin: 20px auto 0 auto;
 				color: red;
 				font-size: 20px;
 				visibility: hidden;
@@ -129,7 +129,10 @@ main {
 	}
 
 	#nopassword-form {
-		height: 200px;
+		height: 230px;
+		.form-group {
+			padding: 10px;
+		}
 	}
 }
 footer {

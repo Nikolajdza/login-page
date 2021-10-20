@@ -14,8 +14,8 @@ function validEmail() {
 	const emailErr = document.getElementById('email-err');
 
 	if (email === '') {
-		emailErr.style.color = 'red';
 		emailErr.textContent = 'Email is required!';
+		emailErr.style.visibility = 'visible';
 		return false;
 	} else if (!email.includes('@')) {
 		emailErr.style.color = 'red';
