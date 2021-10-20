@@ -27,3 +27,6 @@ export async function checkUser() {
 		return false;
 	}
 }
+
+//wrong username or password srediti da bude jedna poruka
+//izbaciti password iz cookie
