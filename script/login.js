@@ -25,6 +25,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
 function getUserInfo(user) {
 	const userCookie = user;
 	delete userCookie.password;
+	//! umesto delete uraditi destructing objekta user i izvuci sta treba
 	//!uraditi
 	//!preimenovati funkciju getuserinfo npr
 	return JSON.stringify(userCookie);
@@ -46,4 +47,7 @@ function createCookie(user) {
 		cookiejs.setCookie('user info', getUserInfo(user));
 	}
 }
-//!treba da bude jedan cookie
+//! treba da bude jedan cookie
+//! ako se cekira remember me cookiju se pridruzuje expiration date
+//! moze dase uradi ako se korisnik vrati u toku expiration date produziti mu cookie na taj period
+//! ne moze da se dobije expiration date iz cookija, zahteva dva cookija
