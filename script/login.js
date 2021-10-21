@@ -22,9 +22,11 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
 	}
 });
 
-function userCookie(user) {
+function getUserInfo(user) {
 	const userCookie = user;
 	delete userCookie.password;
+	//!uraditi
+	//!preimenovati funkciju getuserinfo npr
 	return JSON.stringify(userCookie);
 }
 
@@ -38,10 +40,10 @@ function createCookie(user) {
 	const remember = document.getElementById('remember').checked;
 	if (remember) {
 		cookiejs.rememberMeCookie(cookieName, cookieNameValue, days);
-		cookiejs.rememberMeCookie('user info', userCookie(user), days);
+		cookiejs.rememberMeCookie('user info', getUserInfo(user), days);
 	} else {
 		cookiejs.setCookie(cookieName, cookieNameValue);
-
-		cookiejs.setCookie('user info', userCookie(user));
+		cookiejs.setCookie('user info', getUserInfo(user));
 	}
 }
+//!treba da bude jedan cookie
