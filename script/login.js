@@ -22,13 +22,8 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
 	}
 });
 
-function getUserInfo(user) {
-	const userCookie = user;
-	delete userCookie.password;
-	//! umesto delete uraditi destructing objekta user i izvuci sta treba
-	//!uraditi
-	//!preimenovati funkciju getuserinfo npr
-	return JSON.stringify(userCookie);
+function getUserInfo({ username, name, email }) {
+	return JSON.stringify({ username, name, email });
 }
 
 function createCookie(user) {
@@ -47,7 +42,9 @@ function createCookie(user) {
 		cookiejs.setCookie('user info', getUserInfo(user));
 	}
 }
-//! treba da bude jedan cookie
-//! ako se cekira remember me cookiju se pridruzuje expiration date
-//! moze dase uradi ako se korisnik vrati u toku expiration date produziti mu cookie na taj period
-//! ne moze da se dobije expiration date iz cookija, zahteva dva cookija
+//TODO treba da bude jedan cookie
+//TODO ako se cekira remember me cookiju se pridruzuje expiration date
+//TODO moze dase uradi ako se korisnik vrati u toku expiration date produziti mu cookie na taj period
+//TODO ne moze da se dobije expiration date iz cookija, zahteva dva cookija
+//TODO dodati jos jedan parametar expires parametar u create cookie koji ce biti pozvao ako je remember cekiran
+//TODO srediti malo UI , iskoristiti i biblioteku za animacije

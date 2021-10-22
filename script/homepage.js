@@ -15,7 +15,6 @@ logoutBtn.addEventListener('click', (e) => {
 	e.preventDefault();
 
 	cookiejs.removeCookie('username');
-	cookiejs.removeCookie('password');
 	cookiejs.removeCookie('user info');
 	location.href = 'login.html';
 });
