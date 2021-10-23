@@ -1,6 +1,6 @@
-export function setCookie(cname, cvalue) {
-	document.cookie = `${cname}=${cvalue}`;
-}
+// export function setCookie(cname, cvalue) {
+// 	document.cookie = `${cname}=${cvalue}`;
+// }
 
 export function getCookie(cookieName) {
 	let cookie = document.cookie
@@ -19,10 +19,16 @@ export function cookieExpiration(days) {
 	return expire;
 }
 
-export function rememberMeCookie(name, value, days) {
-	document.cookie = `${name}=${value} ;expires=${cookieExpiration(
-		days
-	).toUTCString()}`;
+// export function rememberMeCookie(name, value, days) {
+// 	document.cookie = `${name}=${value} ;expires=${cookieExpiration(
+// 		days
+// 	).toUTCString()}`;
+// }
+
+export function setCookie(name, value, days) {
+	document.cookie = `${name}=${value}${
+		days ? `;expires=${cookieExpiration(days).toUTCString()}` : ''
+	}`;
 }
 
 export function removeCookie(name) {
