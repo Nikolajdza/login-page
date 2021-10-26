@@ -1,6 +1,6 @@
 import * as cookiejs from './cookies.js';
 
-let username = cookiejs.getCookie('username');
+const username = cookiejs.getCookie('user info');
 
 if (!username) {
 	location.href = 'login.html';
@@ -12,7 +12,6 @@ const userInfo = cookiejs.getCookie('user info');
 const days = 7;
 
 if (rememberMe === 'true') {
-	cookiejs.setCookie('username', username, days);
 	cookiejs.setCookie('remember me', 'true', days);
 	cookiejs.setCookie('user info', userInfo, days);
 }

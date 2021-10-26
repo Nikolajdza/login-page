@@ -4,11 +4,8 @@ export async function getUsers() {
 	return data;
 }
 
-export async function checkUser() {
+export async function checkUser(username, password) {
 	let data = await getUsers();
-	let username = document.getElementById('username').value;
-	let password = document.getElementById('password').value;
-
 	let user = data.find((user) => user.username === username);
 
 	if (user) {
