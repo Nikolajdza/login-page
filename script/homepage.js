@@ -1,9 +1,10 @@
 import * as cookiejs from './cookies.js';
+import { redirect } from './redirection.js';
 
 const username = cookiejs.getCookie('user info');
 const link = 'login.html';
 if (!username) {
-	cookiejs.redirect(link);
+	redirect(link);
 }
 
 const rememberMe = cookiejs.getCookie('remember me');

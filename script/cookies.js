@@ -30,7 +30,3 @@ export function yesterday() {
 	date.setDate(date.getDate() - 1);
 	return date;
 }
-
-export function redirect(url) {
-	location.href = url;
-}
