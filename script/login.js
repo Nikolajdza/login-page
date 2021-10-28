@@ -2,8 +2,9 @@ import * as userjs from './user.js';
 import * as cookiejs from './cookies.js';
 
 const username = cookiejs.getCookie('user info');
+const link = 'homepage.html';
 if (username) {
-	location.href = 'homepage.html';
+	cookiejs.redirect(link);
 }
 
 function displayError() {
