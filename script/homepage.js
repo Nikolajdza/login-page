@@ -29,5 +29,5 @@ logoutBtn.addEventListener('click', (e) => {
 	cookiejs.removeCookie('username');
 	cookiejs.removeCookie('remember me');
 	cookiejs.removeCookie('user info');
-	location.href = 'login.html';
+	redirect(link);
 });

@@ -24,7 +24,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
 		displayError();
 	} else {
 		saveUserInfo(user);
-		location.href = 'homepage.html';
+		redirect(link);
 	}
 });
 
